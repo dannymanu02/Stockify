@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stockify</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Apply a sky blue gradient background to the entire page */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #87CEFA, #00BFFF);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #fff;
+        }
+
+        /* Header styling */
+        header {
+            background: rgba(255, 255, 255, 0.2);
+            width: 100%;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin: 0;
+            color: #fff;
+        }
+
+        /* Container to center the content */
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 150px; /* Adjust this to place the container below the header */
+            width: 80%;
+            max-width: 800px;
+        }
+
+        /* Main content styling */
+        .container h2 {
+            font-size: 1.5em;
+            margin: 0;
+            color: #fff;
+        }
+
+        .container p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+
+        /* Button styling */
+        button#start-button {
+            font-size: 1.5em;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button#start-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Search bar styling */
+        .search-bar-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        #search-bar {
+            width: 100%;
+            padding: 10px 40px 10px 10px; /* Add padding to make space for the icon */
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Stockify</h1>
+    </header>
+    <div class="container">
+        <form action="/main" method="POST">
+            <h2>Welcome to Stockify</h2>
+            <p>Stockify is your go-to platform for real-time stock analysis and predictions. Stay ahead of the market with our cutting-edge technology and easy-to-use interface.</p>
+            
+            <div class="search-bar-wrapper">
+                <input type="text" id="search-bar" name="search_query" placeholder="Enter the stock symbol..."><br>
+                <p style="color: black;">The search bar doesn't accept company names and only accepts Company Symbols. For fetching the correct symbol use this <a href="https://www.nasdaqtrader.com/trader.aspx?id=symbollookup" target="_blank">resource</a>.</p>
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            
+            <button id="start-button">Get Started</button>
+        </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>
