@@ -42,10 +42,6 @@ black @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_964h
 bleach @ file:///opt/conda/conda-bld/bleach_1641577558959/work
 blinker==1.7.0
 blis==0.7.11
-bokeh @ file:///private/var/folders/k1/30mswbxs7r1g6zwn8y4fyt500000gp/T/abs_36lk538r68/croot/bokeh_1697490451734/work
-boltons @ file:///Users/cbousseau/work/recipes/ci_py311/boltons_1677965141748/work
-boto3==1.34.79
-botocore==1.34.79
 Bottleneck @ file:///Users/cbousseau/work/recipes/ci_py311/bottleneck_1677925122241/work
 branca==0.7.1
 Brotli @ file:///Users/cbousseau/work/recipes/ci_py311/brotli-split_1677936346777/work
