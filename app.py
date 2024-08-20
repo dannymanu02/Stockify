@@ -7,7 +7,7 @@ from dotenv import load_dotenv
 
 from stockify.genai import responseGenerator
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 
 def perform_analytics(name):
     da = dataAnalytics(name=name)
