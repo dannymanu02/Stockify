@@ -7,30 +7,38 @@ from dotenv import load_dotenv
 
 from stockify.genai import responseGenerator
 
+from PIL import Image
+
+import base64
+
 app = Flask(__name__, static_folder='static')
 
+plots = []
+images = []
+
 def perform_analytics(name):
+
     da = dataAnalytics(name=name)
     
     comp = da.fetch_company_details(name)
     
     data = da.get_historical_data(name)
 
-    da.plot_closing_prices(data)
+    plots.append(da.plot_closing_prices(data))
 
-    da.plot_volume_traded(data)
+    plots.append(da.plot_volume_traded(data))
 
-    da.plot_intraday_diff(data)
+    plots.append(da.plot_intraday_diff(data))
 
-    da.plot_intraday_change_trend(data)
+    plots.append(da.plot_intraday_change_trend(data))
 
-    da.plot_decomposition(data)
+    plots.append(da.plot_decomposition(data))
 
     crisis_data, covid_data = da.get_crisis_covid_data(data)
 
-    da.plot_rec_analysis(crisis_data)
+    plots.append(da.plot_rec_analysis(crisis_data))
 
-    da.plot_covid_analysis(covid_data)
+    plots.append(da.plot_covid_analysis(covid_data))
 
     return comp
 
@@ -53,31 +61,56 @@ def genai_text(company):
 
     rg = responseGenerator()
 
-    responses.append(rg.gen_ai_text_generate(cpot, "static/"+company+'_cpot.png'))
-    responses.append(rg.gen_ai_text_generate(vtot, "static/"+company+'_vtot.png'))
-    responses.append(rg.gen_ai_text_generate(iddot, "static/"+company+'_iddot.png'))
-    responses.append(rg.gen_ai_text_generate(idctot, "static/"+company+'_idctot.png'))
-    responses.append(rg.gen_ai_text_generate(dec, "static/"+company+'_dec.png'))
-    responses.append(rg.gen_ai_text_generate(crisis_cpot, "static/"+company+'_crisis_cpot.png'))
-    responses.append(rg.gen_ai_text_generate(crisis_vtot, "static/"+company+'_crisis_vtot.png'))
-    responses.append(rg.gen_ai_text_generate(crisis_dec, "static/"+company+'_crisis_dec.png'))
-    responses.append(rg.gen_ai_text_generate(covid_cpot, "static/"+company+'_covid_cpot.png'))
-    responses.append(rg.gen_ai_text_generate(covid_vtot, "static/"+company+'_covid_vtot.png'))
-    responses.append(rg.gen_ai_text_generate(covid_dec, "static/"+company+'_covid_dec.png'))
+    cpot_img = plots[0]
+    cpot_img = base64.b64encode(cpot_img.getvalue()).decode('utf-8')
+    images.append(cpot_img)
+    vtot_img = plots[1]
+    vtot_img = base64.b64encode(vtot_img.getvalue()).decode('utf-8')
+    images.append(vtot_img)
+    iddot_img = plots[2]
+    iddot_img = base64.b64encode(iddot_img.getvalue()).decode('utf-8')
+    images.append(iddot_img)
+    idctot_img = plots[3]
+    idctot_img = base64.b64encode(idctot_img.getvalue()).decode('utf-8')
+    images.append(idctot_img)
+    dec_img = plots[4]
+    dec_img = base64.b64encode(dec_img.getvalue()).decode('utf-8')
+    images.append(dec_img)
+
+    crisis_cpot_img = plots[5][0]
+    crisis_cpot_img = base64.b64encode(crisis_cpot_img.getvalue()).decode('utf-8')
+    images.append(crisis_cpot_img)
+    crisis_vtot_img = plots[5][1]
+    crisis_vtot_img = base64.b64encode(crisis_vtot_img.getvalue()).decode('utf-8')
+    images.append(crisis_vtot_img)
+    crisis_dec_img = plots[5][2]
+    crisis_dec_img = base64.b64encode(crisis_dec_img.getvalue()).decode('utf-8')
+    images.append(crisis_dec_img)
+
+    covid_cpot_img = plots[6][0]
+    covid_cpot_img = base64.b64encode(covid_cpot_img.getvalue()).decode('utf-8')
+    images.append(covid_cpot_img)
+    covid_vtot_img = plots[6][1]
+    covid_vtot_img = base64.b64encode(covid_vtot_img.getvalue()).decode('utf-8')
+    images.append(covid_vtot_img)
+    covid_dec_img = plots[6][2]
+    covid_dec_img = base64.b64encode(covid_dec_img.getvalue()).decode('utf-8')
+    images.append(covid_dec_img)
+
+    # images.append(img_base64)
+    responses.append(rg.gen_ai_text_generate(cpot, cpot_img))
+    responses.append(rg.gen_ai_text_generate(vtot, vtot_img))
+    responses.append(rg.gen_ai_text_generate(iddot, iddot_img))
+    responses.append(rg.gen_ai_text_generate(idctot, idctot_img))
+    responses.append(rg.gen_ai_text_generate(dec, dec_img))
+    responses.append(rg.gen_ai_text_generate(crisis_cpot, crisis_cpot_img))
+    responses.append(rg.gen_ai_text_generate(crisis_vtot, crisis_vtot_img))
+    responses.append(rg.gen_ai_text_generate(crisis_dec, crisis_dec_img))
+    responses.append(rg.gen_ai_text_generate(covid_cpot, covid_cpot_img))
+    responses.append(rg.gen_ai_text_generate(covid_vtot, covid_vtot_img))
+    responses.append(rg.gen_ai_text_generate(covid_dec, covid_dec_img))
 
     return responses
-
-# @app.after_request
-# def delete_files(response):
-#     static_dir = os.path.join(app.root_path, 'static')
-    
-#     for filename in os.listdir(static_dir):
-#         file_path = os.path.join(static_dir, filename)
-#         if os.path.isfile(file_path):
-#             os.remove(file_path)
-    
-#     return response
-
 
 @app.route("/")
 def index():
@@ -91,7 +124,7 @@ def main_page():
 
     generated_text = genai_text(company)
 
-    return render_template('main.html', company = company.upper(), res = comp, gen_text = generated_text)
+    return render_template('main.html', company = company.upper(), res = comp, gen_text = generated_text, images = images)
 
 if __name__ == '__main__':
     app.run(debug=True)

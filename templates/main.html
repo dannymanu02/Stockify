@@ -155,6 +155,7 @@
         </div>
     </div>
     <div class="results-container">
+        <h1>ABOUT {{company}}</h1><br>
         <p>{{res.info['longBusinessSummary']}}</p><br>
         <h2 style="text-align:center;">{{company}} Key Metrics</h2>
     <table>
@@ -214,41 +215,41 @@
     <h1>Stock Analysis</h1><br>
     <h2>Over Time Analysis</h2>
     <h3>Stock Closing Prices Over Time</h3>
-    <img src="{{ url_for('static', filename= company+'_cpot.png') }}" alt="Closing Prices Plot">
+    <img src="data:image/png;base64,{{ images[0] }}" alt="Closing Prices Plot">
     <p>{{gen_text[0] | safe}}</p><br>
     <h3>Stock traded volumes Over Time</h3>
-    <img src="{{ url_for('static', filename= company+'_vtot.png') }}" alt="Traded Volumes Plot">
+    <img src="data:image/png;base64,{{ images[1] }}" alt="Traded Volumes Plot">
     <p>{{gen_text[1] | safe}}</p><br>
     <h3>Stock Intraday Difference Prices Over Time</h3>
-    <img src="{{ url_for('static', filename= company+'_iddot.png') }}" alt="Intraday Difference Plot">
+    <img src="data:image/png;base64,{{ images[0] }}" alt="Intraday Difference Plot">
     <p>{{gen_text[2] | safe}}</p><br>
     <h3>Stock Intraday Difference Trend</h3>
-    <img src="{{ url_for('static', filename= company+'_idctot.png') }}" alt="Intraday Difference Trend Plot">
+    <img src="data:image/png;base64,{{ images[0] }}" alt="Intraday Difference Trend Plot">
     <p>{{gen_text[3] | safe}}</p><br>
     <h3>Stock Decomposition for Trends, Seasonality and Residual Analysis</h3>
-    <img src="{{ url_for('static', filename= company+'_dec.png') }}" alt="Decomposition Plot">
+    <img src="data:image/png;base64,{{ images[0] }}" alt="Decomposition Plot">
     <p>{{gen_text[4] | safe}}</p><br>
     <br>
     <h2>Analysis of Stock during Recession</h2><br>
     <h3>Stock Closing Prices During Recession</h3>
-    <img src="{{ url_for('static', filename= company+'_crisis_cpot.png') }}" alt="Recession Closing Prices Plot">
+    <img src="data:image/png;base64,{{ images[0] }}" alt="Recession Closing Prices Plot">
     <p>{{gen_text[5] | safe}}</p><br>
     <h3>Stock traded volumes During Recession</h3>
-    <img src="{{ url_for('static', filename= company+'_crisis_vtot.png') }}" alt="Stock traded volumes During Recession">
+    <img src="data:image/png;base64,{{ images[0] }}" alt="Stock traded volumes During Recession">
     <p>{{gen_text[6] | safe}}</p><br>
     <h3>Decomposition for Trends, Seasonality and Residual Analysis</h3>
-    <img src="{{ url_for('static', filename= company+'_crisis_dec.png') }}" alt="Decomposition Plot">
+    <img src="data:image/png;base64,{{ images[0] }}" alt="Decomposition Plot">
     <p>{{gen_text[7] | safe}}</p><br>
     <br>
     <h2>Analysis of Stock during Covid</h2><br>
     <h3>Stock Closing Prices During Covid</h3>
-    <img src="{{ url_for('static', filename= company+'_covid_cpot.png') }}" alt="Covid Closing Prices Plot">
+    <img src="data:image/png;base64,{{ images[0] }}" alt="Covid Closing Prices Plot">
     <p>{{gen_text[8] | safe}}</p><br>
     <h3>Stock traded volumes During Covid</h3>
-    <img src="{{ url_for('static', filename= company+'_covid_vtot.png') }}" alt="Stock traded volumes During Covid">
+    <img src="data:image/png;base64,{{ images[0] }}" alt="Stock traded volumes During Covid">
     <p>{{gen_text[9] | safe}}</p><br>
     <h3>Decomposition for Trends, Seasonality and Residual Analysis</h3>
-    <img src="{{ url_for('static', filename= company+'_covid_dec.png') }}" alt="Decomposition Plot">
+    <img src="data:image/png;base64,{{ images[0] }}" alt="Decomposition Plot">
     <p>{{gen_text[10] | safe}}</p><br>    
     </div>
 </body>

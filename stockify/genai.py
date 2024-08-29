@@ -2,6 +2,10 @@ import google.generativeai as genai
 import PIL.Image
 from dotenv import load_dotenv
 
+from io import BytesIO
+
+import base64
+
 import os
 
 load_dotenv()
@@ -16,6 +20,7 @@ class responseGenerator:
         pass
 
     def gen_ai_text_generate(self, text, image):
-        img = PIL.Image.open(image)
+        image_data = base64.b64decode(image)
+        img = PIL.Image.open(BytesIO(image_data))
         response = self.model.generate_content([text, img])
         return response.text
