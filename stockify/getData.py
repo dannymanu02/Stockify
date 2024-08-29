@@ -41,7 +41,7 @@ class dataAnalytics:
         plt.ylabel('Close Price')
         plt.legend()
 
-        plt.savefig(cpot, format='png')
+        plt.savefig(cpot, format='jpeg')
         plt.close()
         cpot.seek(0)
         return cpot
@@ -55,7 +55,7 @@ class dataAnalytics:
         plt.ylabel('Volume')
         plt.legend()
 
-        plt.savefig(vtot, format='png')
+        plt.savefig(vtot, format='jpeg')
         plt.close()
         vtot.seek(0)
         return vtot
@@ -72,7 +72,7 @@ class dataAnalytics:
         plt.ylabel('Close Price')
         plt.legend()
         
-        plt.savefig(iddot, format='png')
+        plt.savefig(iddot, format='jpeg')
         plt.close()
         iddot.seek(0)
         return iddot
@@ -93,7 +93,7 @@ class dataAnalytics:
         plt.ylabel('Intraday Change')
         plt.legend()
 
-        plt.savefig(idctot, format='png')
+        plt.savefig(idctot, format='jpeg')
         plt.close()
         idctot.seek(0)
         return idctot
@@ -117,7 +117,7 @@ class dataAnalytics:
         plt.legend(loc='upper left')
         plt.tight_layout()
         
-        plt.savefig(dec, format='png')
+        plt.savefig(dec, format='jpeg')
         plt.close()
         dec.seek(0)
         return dec
@@ -145,7 +145,7 @@ class dataAnalytics:
         plt.ylabel('Close Price')
         plt.legend()
 
-        plt.savefig(crisis_cpot, format='png')
+        plt.savefig(crisis_cpot, format='jpeg')
         plt.close()
         crisis_cpot.seek(0)
 
@@ -157,7 +157,7 @@ class dataAnalytics:
         plt.ylabel('Volume')
         plt.legend()
 
-        plt.savefig(crisis_vtot, format='png')
+        plt.savefig(crisis_vtot, format='jpeg')
         plt.close()
         crisis_vtot.seek(0)
 
@@ -179,7 +179,7 @@ class dataAnalytics:
         plt.legend(loc='upper left')
         plt.tight_layout()
 
-        plt.savefig(crisis_dec, format='png')
+        plt.savefig(crisis_dec, format='jpeg')
         plt.close()
         crisis_dec.seek(0)
 
@@ -194,7 +194,7 @@ class dataAnalytics:
         plt.ylabel('Close Price')
         plt.legend()
 
-        plt.savefig(covid_cpot, format='png')
+        plt.savefig(covid_cpot, format='jpeg')
         plt.close()
         covid_cpot.seek(0)
 
@@ -206,7 +206,7 @@ class dataAnalytics:
         plt.ylabel('Volume')
         plt.legend()
 
-        plt.savefig(covid_vtot, format='png')
+        plt.savefig(covid_vtot, format='jpeg')
         plt.close()
         covid_vtot.seek(0)
 
@@ -228,7 +228,7 @@ class dataAnalytics:
         plt.legend(loc='upper left')
         plt.tight_layout()
 
-        plt.savefig(covid_dec, format='png')
+        plt.savefig(covid_dec, format='jpeg')
         plt.close()
         covid_dec.seek(0)
         return covid_cpot, covid_vtot, covid_dec
