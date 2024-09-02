@@ -105,4 +105,4 @@ To deploy this application on Azure App Services, follow these steps:
 
 ## Contact
 
-For any questions or suggestions, feel free to open an issue or contact me via [email@example.com](mailto:email@example.com).
+For any questions or suggestions, feel free to open an issue or contact me via [email@example.com](mailto:danielmanu02@example.com).
