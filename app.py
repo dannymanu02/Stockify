@@ -39,7 +39,7 @@ def perform_analytics(name):
     plots.append(da.plot_rec_analysis(crisis_data))
 
     plots.append(da.plot_covid_analysis(covid_data))
-
+    
     return comp
 
 def genai_text(company):
@@ -97,7 +97,6 @@ def genai_text(company):
     covid_dec_img = base64.b64encode(covid_dec_img.getvalue()).decode('utf-8')
     images.append(covid_dec_img)
 
-    # images.append(img_base64)
     responses.append(rg.gen_ai_text_generate(cpot, cpot_img))
     responses.append(rg.gen_ai_text_generate(vtot, vtot_img))
     responses.append(rg.gen_ai_text_generate(iddot, iddot_img))
